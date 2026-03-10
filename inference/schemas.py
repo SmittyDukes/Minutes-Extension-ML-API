@@ -7,3 +7,8 @@ class PredictionRequest(BaseModel):
     time_left: int
     score_margin: int
     timeouts_left: int
+
+class PredictionResponse(BaseModel):
+    decision_id: str
+    model_version: str
+    extend_probability: float

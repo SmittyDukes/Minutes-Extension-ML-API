@@ -1,0 +1,13 @@
+{
+  "model_name": "minutes_extension_model",
+  "model_version": "1.0",
+  "algorithm": "LogisticRegression",
+  "features": [
+    "minutes_played",
+    "fatigue_index",
+    "fouls",
+    "time_left",
+    "score_margin",
+    "timeouts_left"
+  ]
+}
