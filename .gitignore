@@ -1,0 +1,18 @@
+# Python virtual environments
+venv/
+venv1/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Model artifacts
+*.pkl
+*.joblib
+
+# Environment variables
+.env
+
+# MacOS system files
+.DS_Store
