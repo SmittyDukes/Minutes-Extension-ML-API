@@ -1,7 +1,9 @@
 __pycache__
 *.pyc
-.venv
+.venv1
 .git
-logs
-data
-training
+.gitignore
+.idea
+.DS_Store
+tests/
+data/

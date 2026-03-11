@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uuid
+import json
 
 from app.predict import predict_extension
 from app.schemas import PredictionRequest, PredictionResponse
@@ -20,6 +21,11 @@ def health_check():
         "model_loaded": True,
         "service": "basketball_decision_api"
     }
+@app.get("/model-info")
+def model_info():
+    with open("models/v1/metadata.json") as f:
+        metadata = json.load(f)
+    return metadata
 
 
 @app.post("/predict", response_model=PredictionResponse)
