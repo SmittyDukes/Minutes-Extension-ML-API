@@ -11,9 +11,11 @@ __pycache__/
 *.pkl
 *.joblib
 
+# Allow our trained models artifact
+!models/v1/model.pkl
+
 # Environment variables
 .env
 
 # MacOS system files
 .DS_Store
-

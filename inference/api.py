@@ -2,6 +2,10 @@ from fastapi import FastAPI
 import uuid
 
 from inference.predict import predict_extension
+from inference.schemas import PredictionRequest, PredictionResponse
+
+from logs.logging import log_decision_event
+from datetime import datetime
 
 app = FastAPI()
 
@@ -9,28 +13,34 @@ app = FastAPI()
 @app.get("/")
 def root():
     return {"message": "Basketball decision API running"}
+@app.get("/health")
+def health_check():
+    return {
+        "status": "ok",
+        "model_loaded": True,
+        "service": "basketball_decision_api"
+    }
 
 
-@app.get("/predict")
-def predict(minutes_played: int,
-            fatigue_index: float,
-            fouls: int,
-            time_left: int,
-            score_margin: int,
-            timeouts_left: int):
+@app.post("/predict", response_model=PredictionResponse)
+def predict(request: PredictionRequest):
 
-    probability = predict_extension(
-        minutes_played,
-        fatigue_index,
-        fouls,
-        time_left,
-        score_margin,
-        timeouts_left
-    )
+    probability, model_version = predict_extension(request)
 
     decision_id = str(uuid.uuid4())
 
-    return {
+    decision_event = {
         "decision_id": decision_id,
-        "extend_probability": probability
+        "timestamp": datetime.utcnow().isoformat(),
+        "model_version": model_version,
+        "inputs": request.dict(),
+        "probability": probability
     }
+
+    log_decision_event(decision_event)
+
+    return PredictionResponse(
+        decision_id=decision_id,
+        extend_probability=probability,
+        model_version=model_version
+    )
