@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 import uuid
 
-from inference.predict import predict_extension
-from inference.schemas import PredictionRequest, PredictionResponse
+from app.predict import predict_extension
+from app.schemas import PredictionRequest, PredictionResponse
 
 from logs.logging import log_decision_event
 from datetime import datetime
