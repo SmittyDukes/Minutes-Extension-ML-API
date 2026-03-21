@@ -93,12 +93,6 @@ POST /predict
   "model_version": "v1"
 }
 
-## GET/health
-{
-  "status": "ok"
-}
-
-
 
 ## Decision Logging
 Every prediction event is logged to a JSONL decision log.
