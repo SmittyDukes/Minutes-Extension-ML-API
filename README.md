@@ -93,25 +93,27 @@ POST /predict
   "model_version": "v1"
 }
 
+## GET/health
+{
+  "status": "ok"
+}
+
+
+
 ## Decision Logging
 Every prediction event is logged to a JSONL decision log.
 
 {
  "decision_id": "abc123",
  "model_version": "minutes_extension_v1",
- "inputs": {...},
- "probability": 0.64,
+ "input_features": {...},
+ "extend_probability": 0.64,
  "timestamp": "2026-03-04T20:11:22"
 }
 This enables:
 traceability
 debugging
 auditing model decisions
-
-## GET/health
-{
-  "status": "ok"
-}
 
 
 
