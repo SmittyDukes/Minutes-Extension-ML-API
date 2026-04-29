@@ -150,7 +150,7 @@ Probability outside valid range → abstain
 Missing required features → abstain
 All failure cases return structured responses with clear reasoning.
 
-##Limitations
+## Limitations
 - The model is trained on synthetic data; real-world performance data would be required to validate accuracy and generalize to live game scenarios.
 
 - The decision threshold is currently hardcoded (0.6); a production system would externalize this into a versioned policy layer to allow dynamic configuration and governance.
