@@ -137,11 +137,17 @@ docker run -p 8000:8000 minutes-extension-ml
 
 
 ## Engineering Decisions
-- Logistic Regression was chosen for its interpretability and well-calibrated probability outputs, which are critical for threshold-based decision systems. More complex models such as gradient boosting could improve predictive accuracy but would reduce transparency, making it harder to reason about and debug policy-driven decisions.
+- Logistic Regression was chosen for its interpretability and well-calibrated probability outputs, which are critical for threshold-based decision systems.
+  
+- More complex models such as gradient boosting could improve predictive accuracy but would reduce transparency, making it harder to reason about and debug policy-driven decisions.
 
-- Features were selected based on their relevance to player fatigue, game context, and foul risk, ensuring the model captures key factors influencing real-world coaching decisions. Additional features such as player matchups or tracking data could improve performance but were excluded to keep the system simple, interpretable, and aligned with available structured inputs.
+- Features were selected based on their relevance to player fatigue, game context, and foul risk, ensuring the model captures key factors influencing real-world coaching decisions.
+  
+- Additional features such as player matchups or tracking data could improve performance but were excluded to keep the system simple, interpretable, and aligned with available structured inputs.
 
-- JSONL logging was used to record each decision event as a structured, append-only record, enabling efficient auditing, traceability, and post-hoc analysis. A database-backed solution would provide better querying and scalability, but JSONL was chosen for simplicity and low operational overhead at this stage.
+- JSONL logging was used to record each decision event as a structured, append-only record, enabling efficient auditing, traceability, and post-hoc analysis.
+
+-   A database-backed solution would provide better querying and scalability, but JSONL was chosen for simplicity and low operational overhead at this stage.
 
 ## Failure Handling
 The system is designed to fail safely:
