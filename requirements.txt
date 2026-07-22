@@ -1,6 +1,4 @@
-fastapi
-uvicorn
-scikit-learn
-pandas
-joblib
-pydantic
+nba_api==1.10.2
+pandas==2.3.3
+numpy==2.0.2
+scikit-learn==1.6.1
