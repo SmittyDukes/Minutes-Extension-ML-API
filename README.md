@@ -1,5 +1,6 @@
 # Minutes Extension ML System (v2)
 
+
 Predicts whether an NBA player is likely to play significantly more minutes than usual in an upcoming game — and, just as importantly, flags when the model doesn't have enough signal to say.
 
 This is a rebuild of an earlier prototype. The first version used synthetic in-game data and assumed a coach as the end user. This version uses real NBA game logs, real held-out evaluation, and a different target user — and getting to that reframe is as much the point of this project as the model itself.
@@ -110,4 +111,8 @@ Widening the abstention band raises both precision and recall on committed calls
 pip install -r requirements.txt # nba_api, pandas, scikit-learn, numpy
 
 python build_features.py # pulls data via nba_api, writes features.csv
+<<<<<<< HEAD
 python train.py # trains model, prints evaluation + abstention calibration table
+=======
+python train.py # trains model, prints evaluation + abstention calibration table
+>>>>>>> 2514373d3248dcc1d79c4c2ab2e6e79dc2595743
